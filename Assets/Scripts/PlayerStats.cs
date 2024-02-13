@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
         if (me == null)
             me = this;
         money = PlayerPrefs.GetFloat("money", 0);
+
     }
     private void OnDestroy()
     {

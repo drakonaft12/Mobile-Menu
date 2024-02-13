@@ -13,4 +13,9 @@ public class Buttons : ButtonBase
     {
         Controller.me.SetPage(nextPage);
     }
+
+    public override void OnDown(GameObject gameObject)
+    {
+        
+    }
 }

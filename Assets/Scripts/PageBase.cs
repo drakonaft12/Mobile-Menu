@@ -14,16 +14,13 @@ public abstract class PageBase : MonoBehaviour
     private GraphicRaycaster[] raycaster;
 
 
-    private void OnEnable()
-    {
-        allTargetGraphic = GetComponentsInChildren<Image>();
-        allTargetText = GetComponentsInChildren<TextMeshProUGUI>();
-        raycaster = GetComponentsInChildren<GraphicRaycaster>();
-    }
 
     public async virtual void StartScreen()
     {
         gameObject.SetActive(true);
+        allTargetGraphic = GetComponentsInChildren<Image>();
+        allTargetText = GetComponentsInChildren<TextMeshProUGUI>();
+        raycaster = GetComponentsInChildren<GraphicRaycaster>();
         foreach (var item in raycaster)item.enabled = false;
         Color color;
             foreach (var item in allTargetGraphic)

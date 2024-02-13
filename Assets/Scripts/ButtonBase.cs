@@ -22,7 +22,7 @@ public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerU
         startScale = transform.localScale;
     }
 
-    public void AddListener(Action action)
+    public virtual void AddListener(Action action)
     {
         if(onClick == null)
         onClick = action;
@@ -34,6 +34,8 @@ public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerU
 
         onClick?.Invoke();
     }
+
+    public abstract void OnDown(GameObject gameObject); 
 
     public void OnPointerUp(PointerEventData eventData)
     {
