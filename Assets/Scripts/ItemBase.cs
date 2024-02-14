@@ -8,13 +8,15 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
 {
-    private float damage;
-    private float moneyMore;
+    private float damage = 0;
+    private float moneyMore = 0;
+    private string nameItem = "Default";
     private TextMeshProUGUI text;
 
     public float Money { set => moneyMore = value; }
     public float Damage { set => damage = value; }
     public TextMeshProUGUI TextInfo { get => text; set => text = value; }
+    public string NameI { get => nameItem; set => nameItem = value; }
 
     private void Awake()
     {
@@ -28,6 +30,6 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        text.text = $"Money for click: \t{moneyMore}\nDamage for click: \t{damage}";
+        text.text = $"{nameItem}\n\nMoney for click: \t{moneyMore}\nDamage for click: \t{damage}";
     }
 }

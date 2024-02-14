@@ -11,7 +11,7 @@ public abstract class PageBase : MonoBehaviour
     private Image[] allTargetGraphic;
     private TextMeshProUGUI[] allTargetText;
     [SerializeField]private float animationDuration = 2;
-    private GraphicRaycaster[] raycaster;
+    [SerializeField] private GraphicRaycaster[] raycaster;
 
 
 
@@ -20,7 +20,6 @@ public abstract class PageBase : MonoBehaviour
         gameObject.SetActive(true);
         allTargetGraphic = GetComponentsInChildren<Image>();
         allTargetText = GetComponentsInChildren<TextMeshProUGUI>();
-        raycaster = GetComponentsInChildren<GraphicRaycaster>();
         foreach (var item in raycaster)item.enabled = false;
         Color color;
             foreach (var item in allTargetGraphic)
