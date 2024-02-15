@@ -9,9 +9,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
-[RequireComponent(typeof(GridLayoutGroup))]
 public class ItemShop : MonoBehaviour
 {
+    [SerializeField] GridLayoutGroup shopInventar;
     [SerializeField] BuyItems prefab;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] BuyButton buyButton;
@@ -30,7 +30,7 @@ public class ItemShop : MonoBehaviour
     {
         for (int i = 0; i < countItems; i++)
         {
-            items[i] = Instantiate(prefab, transform);
+            items[i] = Instantiate(prefab, shopInventar.transform);
             var r = UnityEngine.Random.Range(0, collTypesItems-1);
             var itemComp = AddItemComp(r, items[i].gameObject);
             AddRandZnach(itemComp, items[i]);
