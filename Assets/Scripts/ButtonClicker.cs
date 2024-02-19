@@ -16,7 +16,7 @@ public class ButtonClicker : ButtonBase
     }
     private void onButt()
     {
-        PlayerStats.me.Zarabotak(zarabotak);
+        PlayerStats.me.Zarabotak();
     }
 
     public override void OnDown(GameObject gameObject)

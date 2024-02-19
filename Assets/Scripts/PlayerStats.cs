@@ -6,6 +6,12 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats me;
     private float money;
+    private float moneyAdd = 1;
+
+    public void AddZar(float i)
+    {
+        moneyAdd += i;
+    }
 
     private void Awake()
     {
@@ -28,6 +34,10 @@ public class PlayerStats : MonoBehaviour
     public void Zarabotak(float _money)
     {
         money += _money;
+    }
+    public void Zarabotak()
+    {
+        money += moneyAdd;
     }
 
     public float GetMoney()

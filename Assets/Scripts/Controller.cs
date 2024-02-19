@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -33,6 +34,13 @@ public class Controller : MonoBehaviour
         activePage?.CloseScreen();
         page.StartScreen();
         activePage = page;
+    }
+
+    public async void SetPage(int index, int delay)
+    {
+        allPage[index].gameObject.SetActive(true);
+        await Task.Delay(delay);
+        allPage[index].gameObject.SetActive(false);
     }
 
 }

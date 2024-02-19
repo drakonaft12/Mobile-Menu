@@ -21,7 +21,7 @@ public class BuyItems : MonoBehaviour, IPointerClickHandler
 
     private void FromBuy()
     { 
-        if (PlayerStats.me.ShopItem(cost)) { buyButton.Clicker.AddZar += addZar; buyButton.OnDown(this.gameObject); Destroy(this); }
+        if (PlayerStats.me.ShopItem(cost)) { buyButton.Clicker.AddZar += addZar; buyButton.OnDown(this.gameObject); }
     }
 
     private void Awake()

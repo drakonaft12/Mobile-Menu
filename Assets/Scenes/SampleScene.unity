@@ -927,6 +927,7 @@ MonoBehaviour:
   prefab: {fileID: 1863633847318924859, guid: 98d95769aa653f64f8ca97e01f72b3aa, type: 3}
   text: {fileID: 457796463}
   buyButton: {fileID: 1208342404}
+  itemController: {fileID: 1114052800}
   countItems: 400
   moneyMax: 50
   damageMax: 5
@@ -3448,6 +3449,7 @@ GameObject:
   - component: {fileID: 1114052796}
   - component: {fileID: 1114052795}
   - component: {fileID: 1114052799}
+  - component: {fileID: 1114052800}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3558,6 +3560,25 @@ MonoBehaviour:
   - {fileID: 529925877}
   - {fileID: 874163281}
   activePage: {fileID: 0}
+--- !u!114 &1114052800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114052794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a9949a5f77c59428189114d61dd94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMagaz: 0
+  prefab: {fileID: 8360832233149515037, guid: 98d95769aa653f64f8ca97e01f72b3aa, type: 3}
+  pages:
+  - invGroup: {fileID: 957160641}
+    info: {fileID: 457796463}
+  - invGroup: {fileID: 427112377}
+    info: {fileID: 1708124814}
 --- !u!1 &1137512559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,6 +3861,8 @@ MonoBehaviour:
   textInv: {fileID: 1708124814}
   clicker: {fileID: 2065048843}
   inventar: {fileID: 427112377}
+  itemsIfBuy: []
+  controller: {fileID: 1114052800}
 --- !u!1 &1228289034
 GameObject:
   m_ObjectHideFlags: 0
@@ -6545,7 +6568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.5, y: -23.571428}
+  m_AnchoredPosition: {x: 122.5, y: -23.571426}
   m_SizeDelta: {x: 245, y: 47.142857}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104163649

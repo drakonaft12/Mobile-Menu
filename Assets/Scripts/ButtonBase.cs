@@ -41,4 +41,8 @@ public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         transform.localScale = startScale;
     }
+    private void OnDisable()
+    {
+        transform.localScale = startScale;
+    }
 }
