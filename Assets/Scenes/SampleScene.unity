@@ -923,14 +923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248aea0acc2abbe45ba390b14953c6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopInventar: {fileID: 957160641}
-  prefab: {fileID: 1863633847318924859, guid: 98d95769aa653f64f8ca97e01f72b3aa, type: 3}
-  text: {fileID: 457796463}
   buyButton: {fileID: 1208342404}
   itemController: {fileID: 1114052800}
   countItems: 400
-  moneyMax: 50
-  damageMax: 5
   maxCostMoney: 50
 --- !u!114 &251384578
 MonoBehaviour:
@@ -3450,6 +3445,7 @@ GameObject:
   - component: {fileID: 1114052795}
   - component: {fileID: 1114052799}
   - component: {fileID: 1114052800}
+  - component: {fileID: 1114052801}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3573,12 +3569,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexMagaz: 0
+  indexInvnt: 1
+  moneyMax: 50
+  damageMax: 5
   prefab: {fileID: 8360832233149515037, guid: 98d95769aa653f64f8ca97e01f72b3aa, type: 3}
   pages:
   - invGroup: {fileID: 957160641}
     info: {fileID: 457796463}
   - invGroup: {fileID: 427112377}
     info: {fileID: 1708124814}
+--- !u!114 &1114052801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114052794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3bfce74ccbc3134288b8ddc30784568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObject: {fileID: 470273746}
 --- !u!1 &1137512559
 GameObject:
   m_ObjectHideFlags: 0

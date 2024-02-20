@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
         if(me == null)
             me = this;
         activePage = FindActivePage();
+        
     }
 
     public PageBase FindActivePage()
@@ -24,6 +25,7 @@ public class Controller : MonoBehaviour
             {
                 if (item.isActiveAndEnabled) return item;
             }
+
             return null;
         }
         else return activePage;
@@ -42,5 +44,6 @@ public class Controller : MonoBehaviour
         await Task.Delay(delay);
         allPage[index].gameObject.SetActive(false);
     }
+  
 
 }

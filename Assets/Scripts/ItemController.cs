@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 using static System.Net.Mime.MediaTypeNames;
 using static UnityEditor.Progress;
 
@@ -18,20 +19,30 @@ public class ItemController : MonoBehaviour
     [SerializeField] ItemBase prefab;
     [SerializeField] PageForItems[] pages;
     GeneratorNames generator;
+    Texture t;
 
 
     private void Awake()
     {
-        int g = pages.Length;
-        Items = new ListItems[g];
         generator = new GeneratorNames();
+    }
+    private void Start()
+    {
+        Items = new ListItems[pages.Length];
+        for (int i = 0; i < pages.Length; i++)
+        {
+            Items[i] = new ListItems();
+        }
+        
     }
     public ItemBase AddItem(int index = 0, bool buyItems = true, Color color = new Color())
     {
         Color c = color.a == 0 ? AddRandomColor() : color;
+        
         for (int i = 0; i < pages.Length; i++)
         {
-            if (FindDisable(i, out var itemDisable))
+            if (Items[i] != null)
+                if (FindDisable(i, out var itemDisable))
             {
                 itemDisable.gameObject.SetActive(true);
                 AddRandZnach(itemDisable);
@@ -86,8 +97,10 @@ public class ItemController : MonoBehaviour
         itemI.Money = UnityEngine.Random.Range(1, moneyMax - 1);
         itemI.Damage = UnityEngine.Random.Range(1, damageMax - 1);
         itemI.NameI = generator.ReturnName();
-
+        
     }
+
+    
 
     public void IsOf(int _is,int _of, ItemBase item)
     {
@@ -151,7 +164,10 @@ public class ItemController : MonoBehaviour
         {
             AddItem(i, item);
         }
+        
     }
+
+    
 
     private void Save(int i)
     {
