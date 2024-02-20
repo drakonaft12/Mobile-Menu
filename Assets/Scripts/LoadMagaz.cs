@@ -9,9 +9,9 @@ public class LoadMagaz : MonoBehaviour
     // Start is called before the first frame update
     async void Awake()
     {
-        await Task.Delay(3000);
+        await Task.Delay(2000);
         _gameObject.SetActive(true);
-        await Task.Delay(100);
+        await Task.Delay(1);
         _gameObject.SetActive(false);
     }
 
