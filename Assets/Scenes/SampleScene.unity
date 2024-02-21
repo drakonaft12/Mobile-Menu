@@ -855,6 +855,7 @@ GameObject:
   - component: {fileID: 251384574}
   - component: {fileID: 251384577}
   - component: {fileID: 251384578}
+  - component: {fileID: 251384579}
   m_Layer: 0
   m_Name: ShopItem
   m_TagString: Untagged
@@ -957,6 +958,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &251384579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251384572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590ea0bffbad5b046a214d909774799d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1114052800}
+  maxItems: 400
 --- !u!1 &274867302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3460,6 @@ GameObject:
   - component: {fileID: 1114052795}
   - component: {fileID: 1114052799}
   - component: {fileID: 1114052800}
-  - component: {fileID: 1114052801}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3578,19 +3592,6 @@ MonoBehaviour:
     info: {fileID: 457796463}
   - invGroup: {fileID: 427112377}
     info: {fileID: 1708124814}
---- !u!114 &1114052801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114052794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3bfce74ccbc3134288b8ddc30784568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 470273746}
 --- !u!1 &1137512559
 GameObject:
   m_ObjectHideFlags: 0

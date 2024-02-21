@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -16,12 +17,13 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
     private TextMeshProUGUI text;
     private ItemController controller;
     private Image image;
+    private bool isDelete = false;
 
 
     public float Money { get => characters.moneyMore; set => characters.moneyMore = value; }
     public float Damage { get => characters.damage; set => characters.damage = value; }
     public TextMeshProUGUI TextInfo { get => text; set => text = value; }
-    public string NameI { get => characters.nameItem; set { characters.nameItem = value; SetImageInString(value, 2); } }
+    public string NameI { get => characters.nameItem; set { characters.nameItem = value; } }
     public ItemController Controller { set => controller = value; }
     public ItemCharacters ItemCharacters { get => characters; set => characters = value; }
     public Color Color { set {
@@ -29,13 +31,19 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
             {
                 characters.colorItem[i] = value[i];
             }
-            image.color = value; } }
+            Image.color = value; } }
+
+    public bool IsDelete { get => isDelete; set { isDelete = value; if (isDelete) gameObject.SetActive(false); else { gameObject.SetActive(true); } } }
+
+    public Image Image { get => image; set => image = value; }
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        Image = GetComponent<Image>();
         characters = new ItemCharacters();
     }
+
+
 
 
     [ContextMenu("Delete")]
@@ -67,13 +75,14 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
                 y++;
             }
         }
-        StartCoroutine(LoadTexture(slova[0]));
-        StartCoroutine(LoadMask(slova[1]));
+        
         
     }
     private IEnumerator LoadTexture(string name)
     {
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Textures/{name}.png");
+        
+        WWW wWW = new WWW("file:///" + UnityEngine.Application.dataPath + $"/Textures/{name}.png");
+        UnityWebRequest unity = new UnityWebRequest();
         
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
         {
@@ -88,7 +97,8 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
     }
     private IEnumerator LoadMask(string name)
     {
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Masks/{name}.png");
+        
+        WWW wWW = new WWW("file:///" + UnityEngine.Application.dataPath + $"/Masks/{name}.png");
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
         {
             yield return null;

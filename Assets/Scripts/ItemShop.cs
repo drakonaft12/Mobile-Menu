@@ -19,6 +19,9 @@ public class ItemShop : MonoBehaviour
     [SerializeField] ItemController itemController;
     [SerializeField] int countItems = 4, maxCostMoney = 50;
     BuyItems[] items;
+    bool isLoad;
+
+    public bool Load { get => isLoad; }
 
     private void Awake()
     {
@@ -27,20 +30,30 @@ public class ItemShop : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(SpawnItems(itemController));
+    }
+
+    private IEnumerator SpawnItems(ItemController Controller)
+    {
+        isLoad = true;
         for (int i = 0; i < countItems; i++)
         {
-            if (items[i] == null || !items[i].enabled || !items[i].gameObject.activeSelf)
+            if (items[i] == null || !items[i].enabled || items[i].gameObject.GetComponent<ItemBase>().IsDelete)
             {
-                var itemComp = itemController.AddItem();
-                items[i] = itemComp.gameObject.GetComponent<BuyItems>();                
-                AddRandZnach(itemComp, items[i]);
+                var itemComp = Controller.AddItem();
+                items[i] = itemComp.gameObject.GetComponent<BuyItems>();
+                AddZnach(itemComp, items[i]);
                 items[i].addButton = buyButton;
                 items[i].Cost = UnityEngine.Random.Range(1, maxCostMoney);
             }
+  
         }
+        yield return null;
+        isLoad = false;
     }
 
-    private void AddRandZnach(ItemBase itemI, BuyItems itemB)
+
+    private void AddZnach(ItemBase itemI, BuyItems itemB)
     {
         itemB.AddZar = (int)itemI.Money;
         itemB.AddDam = (int)itemI.Damage;

@@ -19,7 +19,6 @@ public class ItemController : MonoBehaviour
     [SerializeField] ItemBase prefab;
     [SerializeField] PageForItems[] pages;
     GeneratorNames generator;
-    Texture t;
 
 
     private void Awake()
@@ -96,11 +95,15 @@ public class ItemController : MonoBehaviour
     {
         itemI.Money = UnityEngine.Random.Range(1, moneyMax - 1);
         itemI.Damage = UnityEngine.Random.Range(1, damageMax - 1);
-        itemI.NameI = generator.ReturnName();
-        
+        itemI.NameI = generator.ReturnName(out var mask,out var texture);
+        itemI.mask.sprite = mask;
+        itemI.texture.sprite = texture;
     }
 
-    
+    public List<ItemBase> GetItems(int i)
+    {
+        return Items[i].items;
+    }
 
     public void IsOf(int _is,int _of, ItemBase item)
     {
@@ -131,7 +134,7 @@ public class ItemController : MonoBehaviour
     {
         
         PlayerStats.me.AddZar(-item.Money);
-        item.gameObject.SetActive(false);
+        item.IsDelete = true;
     }
 
     public int FindInvenar(ItemBase item)
