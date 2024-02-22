@@ -20,8 +20,9 @@ public class ItemShop : MonoBehaviour
     [SerializeField] int countItems = 4, maxCostMoney = 50;
     BuyItems[] items;
     bool isLoad;
+    int maxItems;
 
-    public bool Load { get => isLoad; }
+    public bool Load { get => isLoad; set => isLoad = value; }
 
     private void Awake()
     {
@@ -46,12 +47,17 @@ public class ItemShop : MonoBehaviour
                 items[i].addButton = buyButton;
                 items[i].Cost = UnityEngine.Random.Range(1, maxCostMoney);
             }
-  
+
+            yield return new WaitWhile(()=> !isLoad);
         }
-        yield return null;
+       
         isLoad = false;
     }
 
+    private void OnDisable()
+    {
+        StopCoroutine(SpawnItems(itemController));
+    }
 
     private void AddZnach(ItemBase itemI, BuyItems itemB)
     {

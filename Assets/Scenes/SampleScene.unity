@@ -926,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyButton: {fileID: 1208342404}
   itemController: {fileID: 1114052800}
-  countItems: 400
+  countItems: 10000
   maxCostMoney: 50
 --- !u!114 &251384578
 MonoBehaviour:
@@ -971,7 +971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1114052800}
-  maxItems: 400
+  maxItems: 10000
+  shop: {fileID: 251384577}
 --- !u!1 &274867302
 GameObject:
   m_ObjectHideFlags: 0
