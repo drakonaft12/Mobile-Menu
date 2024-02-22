@@ -66,6 +66,10 @@ public class ItemController : MonoBehaviour
         item.Money = characters.moneyMore;
         item.Damage = characters.damage;
         item.NameI = characters.nameItem;
+        item.Mask = characters.indMask;
+        item.Texture = characters.indTex;
+        item.mask.sprite = generator.ReturnMask(characters.indMask);
+        item.texture.sprite = generator.ReturnTexture(characters.indTex);
         bool isMagaz = index == indexMagaz;
         AddParametrs(index, index, isMagaz, c, item);
         Items[index].items.Add(item);
@@ -95,7 +99,9 @@ public class ItemController : MonoBehaviour
     {
         itemI.Money = UnityEngine.Random.Range(1, moneyMax - 1);
         itemI.Damage = UnityEngine.Random.Range(1, damageMax - 1);
-        itemI.NameI = generator.ReturnName(out var mask,out var texture);
+        itemI.NameI = generator.ReturnName(out var mask, out var texture, out var _lP, out var _lS);
+        itemI.Mask = _lS;
+        itemI.Texture = _lP;
         itemI.mask.sprite = mask;
         itemI.texture.sprite = texture;
     }

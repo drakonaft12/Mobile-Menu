@@ -19,11 +19,15 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
     private Image image;
     private bool isDelete = false;
 
+    
+
 
     public float Money { get => characters.moneyMore; set => characters.moneyMore = value; }
     public float Damage { get => characters.damage; set => characters.damage = value; }
     public TextMeshProUGUI TextInfo { get => text; set => text = value; }
     public string NameI { get => characters.nameItem; set { characters.nameItem = value; } }
+    public int Mask { get => characters.indMask; set => characters.indMask = value; }
+    public int Texture { get => characters.indTex; set => characters.indTex = value; }
     public ItemController Controller { set => controller = value; }
     public ItemCharacters ItemCharacters { get => characters; set => characters = value; }
     public Color Color { set {
@@ -118,6 +122,7 @@ public class ItemCharacters
     public float damage = 0;
     public float moneyMore = 0;
     public string nameItem = "Default";
+    public int indTex = 0, indMask = 0;
     public float[] colorItem;
 
     public ItemCharacters()

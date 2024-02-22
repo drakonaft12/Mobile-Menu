@@ -30,23 +30,34 @@ public class GeneratorNames
     {
         System.IO.File.WriteAllText(Application.streamingAssetsPath + "/NamesStat.json", JsonConvert.SerializeObject(variation));
     }
-    public string ReturnName(out Sprite mask, out Sprite texture)
+    public string ReturnName(out Sprite mask, out Sprite texture, out int _lP, out int _lS)
     {
         if (variation != null)
         {
             var lP = variation.прилагательные.Length;
             var lS = variation.существительные.Length;
-            lP = UnityEngine.Random.Range(0, lP);
-            lS = UnityEngine.Random.Range(0, lS);
+            lP = _lP = UnityEngine.Random.Range(0, lP);
+            lS = _lS = UnityEngine.Random.Range(0, lS);
             mask = images.spritesSush[lS];
             texture = images.spritesPrilag[lP];
             return AlwaceGrandChar(variation.прилагательные[lP], 'а', 'А') + " " + variation.существительные[lS];
         }
         mask = null;
         texture = null;
+        _lP = 0;
+        _lS = 0;
         return null;
     }
 
+    public Sprite ReturnMask(int i)
+    {
+        return images.spritesSush[i];
+    }
+
+    public Sprite ReturnTexture(int i)
+    {
+        return images.spritesPrilag[i];
+    }
     public string AlwaceGrandChar(string _name, char iz, char v)
     {
         int r = iz - v;
