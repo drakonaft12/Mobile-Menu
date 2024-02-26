@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 [RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
@@ -21,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OpenCloseMenu();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            StartCoroutine(OpenCloseMenu());
         var jump = Input.GetAxis("Jump");
         player.JumpPlayer(jump);
 
@@ -37,16 +39,18 @@ public class PlayerController : MonoBehaviour
         player.CTRLPlayer(Input.GetKey(KeyCode.LeftControl));
     }
 
-    private void OpenCloseMenu()
+    private IEnumerator OpenCloseMenu()
     {
         if (!isMenu)
         {
             menu.gameObject.SetActive(true);
+            yield return menu.gameObject.transform.DOLocalMoveX(-600, 0.2f);
             isMenu = true;
             UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
+            yield return menu.gameObject.transform.DOLocalMoveX(-1200, 0.2f);
             menu.gameObject.SetActive(false);
             isMenu = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
