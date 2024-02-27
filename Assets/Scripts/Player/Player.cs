@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody rigidbodyPlayer;
     CapsuleCollider capsule;
-    [SerializeField] float speed = 6, sprintSpeed = 14, velocityMovment = 4.4f, staminaSprint = 0.6f, staminaZlesanie = 0.4f, prStop = 0.05f, speedX = 1, speedY = 1;
+    
     [SerializeField] Camera cameraPl;
     [SerializeField] TriggerUp triggerUp;
     [SerializeField] TriggerJump triggerJump;
@@ -26,35 +26,30 @@ public class Player : MonoBehaviour
         
     }
 
-    
-
-    
-
     public void MovePlayer(Vector3 move, bool sprint)
     {
         
-        vector = transform.TransformDirection(move.normalized);
-        vector *= velocityMovment;
-        vector -= vector * prStop;
+        vector = transform.TransformDirection(move.normalized)*4;
         float maxspeed;
-        if (isCtrl) { maxspeed = speed * 0.5f; }
-        else if (sprint&& !triggerUp.isUstal) { maxspeed = sprintSpeed; }
-        else { maxspeed = speed; }
+        if (isCtrl) { maxspeed = PlayerStats.me.speed * 0.5f; }
+        else if (sprint&& !triggerUp.isUstal) { maxspeed = PlayerStats.me.sprintSpeed; }
+        else { maxspeed = PlayerStats.me.speed; }
         maxspeed /= 4;
         var velosityaff = new Vector2(rigidbodyPlayer.velocity.x, rigidbodyPlayer.velocity.z).magnitude/ maxspeed / maxspeed;
         vector -= rigidbodyPlayer.velocity / maxspeed;
-        
+       
         vector.y = rigidbodyPlayer.velocity.y;
         if (!triggerJump.isJump && !triggerUp.isTrogat) { vector.x *= 0.1f; vector.z *= 0.1f; }
-        else if (triggerUp.isTrogat) {
-            transform.position += new Vector3(0, (move.magnitude - velosityaff) * maxspeed * Time.fixedDeltaTime);
+        else if (triggerUp.isTrogat) { var su = move.magnitude - velosityaff;
+            transform.position += new Vector3(0, (su<=0?0: su) * maxspeed* PlayerStats.me.zalesSpeed * Time.deltaTime);
              }
-        float summ = (sprint ? staminaSprint : 0) + (triggerUp.isTrogat&& !triggerJump.isJump ? staminaZlesanie : 0);
+
+        float summ = (sprint ? PlayerStats.me.staminaSprint : 0) + (triggerUp.isTrogat&& !triggerJump.isJump ? PlayerStats.me.staminaZalesanie : 0);
         triggerUp.StaminaUpdate(!triggerUp.isUstal ? move.magnitude* summ * maxspeed / 5:0);
+
         vector.y -= rigidbodyPlayer.velocity.y;
 
         rigidbodyPlayer.AddForce(vector, ForceMode.VelocityChange);
-        
     }
     public void JumpPlayer(float jump)
     {
@@ -62,9 +57,9 @@ public class Player : MonoBehaviour
         {
             vector = rigidbodyPlayer.velocity;
             if (triggerJump.isJump&& !triggerUp.isUstal) { 
-                vector.y =vector.y*0.1f+ jump * 5; 
+                vector.y =vector.y*0.1f+ jump * PlayerStats.me.heithJump; 
                 triggerJump.isJump = false;
-                triggerUp.StaminaUpdate(20);
+                triggerUp.StaminaUpdate(PlayerStats.me.staminaJump);
             }
             rigidbodyPlayer.velocity = vector;
         }
@@ -80,10 +75,10 @@ public class Player : MonoBehaviour
     public void RotatePlayer(Vector2 rotate)
     {
  
-        transform.Rotate(Vector3.up, rotate.x*speedX);
+        transform.Rotate(Vector3.up, rotate.x* PlayerStats.me.speedX);
         var r = cameraPl.transform.localRotation;
         if (r.x>=-0.7f&& r.x<=0.7f)
-        cameraPl.transform.Rotate(Vector3.left, rotate.y*speedY);
+        cameraPl.transform.Rotate(Vector3.left, rotate.y* PlayerStats.me.speedY);
         else {  r.x = r.x>0?0.69f:-0.69f; cameraPl.transform.localRotation = r; }
     }
 }

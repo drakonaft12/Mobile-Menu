@@ -29,19 +29,20 @@ public class ItemInviz : MonoBehaviour
         rect.content.hierarchyCapacity = maxItems;
     }
 
-
+    
     private void ScrollContr(UnityEngine.Vector2 vector)
     {
         items = controller.GetItems(0);
         if (items.Count > itemCount)
         {
             content.enabled = true;
-            itemCount = items.Count;
+            
         }
         else
         {
             content.enabled = false;
         }
+        if(items.Count!= itemCount) { itemCount = items.Count; }
         float intr = (1 - (vector.y <= 0 ? 0 : vector.y)) * itemCount;
         int procent = (int)(intr <= 0 ? 0 : intr);
         for (int i = 0; i < maxItems; i++)
@@ -67,11 +68,7 @@ public class ItemInviz : MonoBehaviour
     }
     private void OnDisable()
     {
-        for (int i = 0; i < itemCount; i++)
-        {
-            SetInv(true, i);
-            items[i].gameObject.SetActive(true);
-        }
+        
     }
 
 }

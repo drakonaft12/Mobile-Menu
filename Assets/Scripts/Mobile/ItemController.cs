@@ -60,9 +60,20 @@ public class ItemController : MonoBehaviour
     }
     public ItemBase AddItem(int index, ItemCharacters characters)
     {
-        Color c = new Color(characters.colorItem[0], characters.colorItem[1], characters.colorItem[2], characters.colorItem[3]) ;
+        Color c = new Color(characters.colorItem[0], characters.colorItem[1], characters.colorItem[2], characters.colorItem[3]);
 
         var item = Instantiate(prefab, pages[index].invGroup.transform);
+        AddLoadZnahc(characters, item);
+        bool isMagaz = index == indexMagaz;
+        AddParametrs(index, index, isMagaz, c, item);
+        Items[index].items.Add(item);
+
+        return item;
+
+    }
+
+    private void AddLoadZnahc(ItemCharacters characters, ItemBase item)
+    {
         item.Money = characters.moneyMore;
         item.Damage = characters.damage;
         item.NameI = characters.nameItem;
@@ -70,12 +81,36 @@ public class ItemController : MonoBehaviour
         item.Texture = characters.indTex;
         item.mask.sprite = generator.ReturnMask(characters.indMask);
         item.texture.sprite = generator.ReturnTexture(characters.indTex);
-        bool isMagaz = index == indexMagaz;
-        AddParametrs(index, index, isMagaz, c, item);
-        Items[index].items.Add(item);
 
-        return item;
+        item.speedPlayer = characters.speed;
+        item.sprintSpeedPlayer = characters.sprintSpeed;
+        item.zalesSpeedPlayer = characters.zalesSpeed;
+        item.heithJumpPlayer = characters.heithJump;
+        item.maxStaminaPlayer = characters.maxStamina;
+        item.staminaPerTimePlayer = characters.staminaPerTime;
+        item.staminaSprintPlayer = characters.staminaSprint;
+        item.staminaZalesaniePlayer = characters.staminaZalesanie;
+        item.staminaJumpPlayer = characters.staminaJump;
+    }
+    private void AddRandZnach(ItemBase itemI)
+    {
+        itemI.Money = UnityEngine.Random.Range(1, moneyMax - 1);
+        itemI.Damage = UnityEngine.Random.Range(1, damageMax - 1);
+        itemI.NameI = generator.ReturnName(out var mask, out var texture, out var _lP, out var _lS);
+        itemI.Mask = _lS;
+        itemI.Texture = _lP;
+        itemI.mask.sprite = mask;
+        itemI.texture.sprite = texture;
 
+        itemI.speedPlayer = UnityEngine.Random.Range(-3f, 3f);
+        itemI.sprintSpeedPlayer = UnityEngine.Random.Range(-4f, 6f);
+        itemI.zalesSpeedPlayer = UnityEngine.Random.Range(-0.2f, 0.4f);
+        itemI.heithJumpPlayer = UnityEngine.Random.Range(-1f, 1f);
+        itemI.maxStaminaPlayer = UnityEngine.Random.Range(-20, 20);
+        itemI.staminaPerTimePlayer = UnityEngine.Random.Range(-0.02f, 0.06f);
+        itemI.staminaSprintPlayer = UnityEngine.Random.Range(-0.1f, 0.2f);
+        itemI.staminaZalesaniePlayer = UnityEngine.Random.Range(-0.1f, 0.2f);
+        itemI.staminaJumpPlayer = UnityEngine.Random.Range(-5, 5);
     }
 
     private void AddParametrs(int i ,int index, bool buyItems, Color c, ItemBase item)
@@ -95,16 +130,7 @@ public class ItemController : MonoBehaviour
 
         return new Color(r, g, b);
     }
-    private void AddRandZnach(ItemBase itemI)
-    {
-        itemI.Money = UnityEngine.Random.Range(1, moneyMax - 1);
-        itemI.Damage = UnityEngine.Random.Range(1, damageMax - 1);
-        itemI.NameI = generator.ReturnName(out var mask, out var texture, out var _lP, out var _lS);
-        itemI.Mask = _lS;
-        itemI.Texture = _lP;
-        itemI.mask.sprite = mask;
-        itemI.texture.sprite = texture;
-    }
+    
 
     public List<ItemBase> GetItems(int i)
     {
@@ -122,12 +148,19 @@ public class ItemController : MonoBehaviour
         }
         if(_of == indexInvnt)
         {
-            PlayerStats.me.AddZar(item.Money);
-        }else
+            SmenaParam(item);
+        }
+        else
         if(_is == indexInvnt && item.gameObject.activeSelf)
         {
-            PlayerStats.me.AddZar(-item.Money);
+            SmenaParam(item,-1);
         }
+    }
+
+    private void SmenaParam(ItemBase item, int mult = 1)
+    {
+        PlayerStats.me.AddZar(item.Money* mult);
+        PlayerStats.me.AddParPlayer(item, mult);
     }
 
     private bool FindDisable(int index, out ItemBase item)
@@ -138,8 +171,8 @@ public class ItemController : MonoBehaviour
     
     public void DeleteItem(ItemBase item)
     {
-        
-        PlayerStats.me.AddZar(-item.Money);
+
+        SmenaParam(item, -1);
         item.IsDelete = true;
     }
 

@@ -9,8 +9,12 @@ public class TriggerUp : MonoBehaviour
     public bool isTrogat = false, isUstal = false;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Slider slider;
-    private float maxStamina = 100, stamina = 100;
+    private float stamina = 100;
     private CapsuleCollider collider;
+
+
+    public float Stamina { get => stamina; set => stamina = value; }
+
     private void Start()
     {
         collider = GetComponent<CapsuleCollider>();
@@ -18,7 +22,7 @@ public class TriggerUp : MonoBehaviour
     public void StaminaUpdate(float _stamina)
     {
         if (stamina <= 0) { isUstal = true; stamina = 0; StartCoroutine(StaminaRegnerator()); }
-        if(stamina >= maxStamina) { stamina = maxStamina; isUstal = false; }
+        if(stamina >= PlayerStats.me.maxStamina) { stamina = PlayerStats.me.maxStamina; isUstal = false; StopAllCoroutines(); }
         if (_stamina != 0)
         {
             stamina -= _stamina;
@@ -39,15 +43,17 @@ public class TriggerUp : MonoBehaviour
     {
         text.text = ((int)stamina).ToString();
         slider.value = (int)stamina;
+        slider.maxValue = PlayerStats.me.maxStamina;
     }
 
     private IEnumerator StaminaRegnerator()
     {
         yield return new WaitForSeconds(3);
+
         while (true)
         {
-            if(stamina >= maxStamina) { yield break; }
-            else { stamina += 0.3f; yield return new WaitForSeconds(0.2f); }
+            if(stamina >= PlayerStats.me.maxStamina) { yield break; }
+            else { stamina += PlayerStats.me.staminaPerTime; yield return new WaitForSeconds(0.2f); }
         }
     }
     private void OnTriggerStay(Collider other)

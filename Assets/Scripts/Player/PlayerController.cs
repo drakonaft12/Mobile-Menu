@@ -28,15 +28,17 @@ public class PlayerController : MonoBehaviour
         var jump = Input.GetAxis("Jump");
         player.JumpPlayer(jump);
 
-    }
-    private void FixedUpdate()
-    {
         var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         var rotate = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        
+
         player.MovePlayer(move, Input.GetKey(KeyCode.LeftShift));
         if (!isMenu) player.RotatePlayer(rotate);
         player.CTRLPlayer(Input.GetKey(KeyCode.LeftControl));
+
+    }
+    private void FixedUpdate()
+    {
+        
     }
 
     private IEnumerator OpenCloseMenu()
