@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats me;
     private float money;
+
     private float moneyAdd = 1;
     public float speed = 5, sprintSpeed = 14, zalesSpeed = 1, heithJump = 6, maxStamina = 100, staminaPerTime = 0.3f, staminaSprint = 0.6f, staminaZalesanie = 0.4f, staminaJump = 20, speedX = 2, speedY = 2;
     public void AddZar(float i)

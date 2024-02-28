@@ -5,6 +5,11 @@ using UnityEngine;
 public class TriggerJump : MonoBehaviour
 {
     public bool isJump = false;
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject != transform.parent.gameObject)

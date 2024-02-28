@@ -9,6 +9,11 @@ using DG.Tweening;
 [RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
 {
+    private const string JumpButton = "Jump";
+    private const string HorisontalButtons = "Horizontal";
+    private const string VerticalButtons = "Vertical";
+    private const string OsX = "Mouse X";
+    private const string OsY = "Mouse Y";
     [SerializeField] Canvas menu;
     Player player;
     bool isMenu = false;
@@ -25,15 +30,19 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Tab))
             StartCoroutine(OpenCloseMenu());
-        var jump = Input.GetAxis("Jump");
-        player.JumpPlayer(jump);
 
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-        var rotate = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (!isMenu)
+        {
+            var jump = Input.GetAxis(JumpButton);
+            player.JumpPlayer(jump);
 
-        player.MovePlayer(move, Input.GetKey(KeyCode.LeftShift));
-        if (!isMenu) player.RotatePlayer(rotate);
-        player.CTRLPlayer(Input.GetKey(KeyCode.LeftControl));
+            var move = new Vector3(Input.GetAxis(HorisontalButtons), 0, Input.GetAxis(VerticalButtons));
+            var rotate = new Vector2(Input.GetAxis(OsX), Input.GetAxis(OsY));
+
+            player.MovePlayer(move, Input.GetAxis("Shift"));
+            player.RotatePlayer(rotate);
+            player.CTRLPlayer(Input.GetKey(KeyCode.LeftControl));
+        }
 
     }
     private void FixedUpdate()
@@ -46,13 +55,15 @@ public class PlayerController : MonoBehaviour
         if (!isMenu)
         {
             menu.gameObject.SetActive(true);
-            yield return menu.gameObject.transform.DOLocalMoveX(-600, 0.2f);
+            player.AnimRead(true);
+            yield return menu.gameObject.transform.DOLocalMoveX(-600, 1);
             isMenu = true;
             UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
-            yield return menu.gameObject.transform.DOLocalMoveX(-1200, 0.2f);
+            player.AnimRead(false);
+            yield return menu.gameObject.transform.DOLocalMoveX(-1200, 1).WaitForCompletion();
             menu.gameObject.SetActive(false);
             isMenu = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;

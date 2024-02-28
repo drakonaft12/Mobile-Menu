@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,7 @@ public class TriggerUp : MonoBehaviour
     public bool isTrogat = false, isUstal = false;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Slider slider;
+    [SerializeField] GameObject model;
     private float stamina = 100;
     private CapsuleCollider collider;
 
@@ -61,17 +63,28 @@ public class TriggerUp : MonoBehaviour
         if (other.gameObject != transform.parent.gameObject && !isUstal) 
         {
             isTrogat = true;
+            
         }
         else if (isUstal)
         {
             isTrogat = false;
         }
     }
+
+    public void PovorotModel(ContactPoint point)
+    {
+        var tCont = point.point;
+        model.transform.LookAt(tCont);
+        var r = model.transform.localRotation;
+        r.x = r.z = 0;
+        model.transform.localRotation = r;
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject != transform.parent.gameObject)
         {
             isTrogat = false;
+            model.transform.rotation = new Quaternion() ;
         }
     }
 }

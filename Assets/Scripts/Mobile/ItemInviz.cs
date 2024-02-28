@@ -62,13 +62,20 @@ public class ItemInviz : MonoBehaviour
     }
     public void SetInv(bool t, int i)
     {
-        items[i].Image.enabled = t;
-        items[i].mask.enabled = t;
-        items[i].texture.enabled = t;
+        if (items[i] != null)
+        {
+            items[i].Image.enabled = t;
+            items[i].mask.enabled = t;
+            items[i].texture.enabled = t;
+        }
     }
     private void OnDisable()
     {
-        
+        for (int i = 0; i < itemCount; i++)
+        {
+            SetInv(true, i);
+            items[i]?.gameObject.SetActive(true);
+        }
     }
 
 }

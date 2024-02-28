@@ -75,15 +75,15 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         text.text = $"{characters.nameItem}\n\nMoney for click: \t\t{characters.moneyMore}\n" +
-            $"Speed: \t\t\t{characters.speed}\n" +
-            $"SprintSpeed: \t\t{characters.sprintSpeed}\n" +
-            $"ZalesSpeed: \t\t{characters.zalesSpeed}\n" +
-            $"HeithJump: \t\t\t{characters.heithJump}\n" +
-            $"MaxStamina: \t\t{characters.maxStamina}\n" +
-            $"StaminaPerTime: \t\t{characters.staminaPerTime}\n" +
-            $"StaminaSprint: \t\t{characters.staminaSprint}\n" +
-            $"StaminaZalesanie: \t{characters.staminaZalesanie}\n" +
-            $"StaminaJump: \t\t{characters.staminaJump}\n";
+            $"Speed: \t\t\t{Math.Round(characters.speed,4)}\n" +
+            $"SprintSpeed: \t\t{Math.Round(characters.sprintSpeed, 4)}\n" +
+            $"ZalesSpeed: \t\t{Math.Round(characters.zalesSpeed, 4)}\n" +
+            $"HeithJump: \t\t\t{Math.Round(characters.heithJump, 4)}\n" +
+            $"MaxStamina: \t\t{Math.Round(characters.maxStamina, 4)}\n" +
+            $"StaminaPerTime: \t\t{Math.Round(characters.staminaPerTime, 4)}\n" +
+            $"StaminaSprint: \t\t{Math.Round(characters.staminaSprint, 4)}\n" +
+            $"StaminaZalesanie: \t{Math.Round(characters.staminaZalesanie, 4)}\n" +
+            $"StaminaJump: \t\t{Math.Round(characters.staminaJump, 4)}\n";
     }
 
     private void SetImageInString(string _string, int coll)

@@ -89,7 +89,7 @@ public class GeneratorNames
     private async void LoadTexture(string name,int index)
     {
 
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.dataPath + $"/Textures/{name}.png");
+        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Textures/{name}.png");
         UnityWebRequest unity = new UnityWebRequest();
 
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
@@ -106,7 +106,7 @@ public class GeneratorNames
     private async void LoadMask(string name, int index)
     {
 
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.dataPath + $"/Masks/{name}.png");
+        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Masks/{name}.png");
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
         {
             await Task.Delay(10);

@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using UnityEngine.Windows;
-using static System.Net.Mime.MediaTypeNames;
-using static UnityEditor.Progress;
+
 
 public class ItemController : MonoBehaviour
 {
@@ -197,6 +198,11 @@ public class ItemController : MonoBehaviour
         Controller.me.SetPage(3,100);
         Load(1);
 
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     private void Load(int i)

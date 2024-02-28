@@ -11,7 +11,6 @@ using UnityEngine;
 using UnityEngine.Networking.Types;
 using UnityEngine.UI;
 using UnityEngine.Windows;
-using static UnityEditor.Progress;
 
 public class ItemShop : MonoBehaviour
 {
