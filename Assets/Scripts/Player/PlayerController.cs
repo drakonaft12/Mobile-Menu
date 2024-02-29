@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
 using DG.Tweening;
+using static UnityEngine.AudioSettings;
 
 [RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private const string OsX = "Mouse X";
     private const string OsY = "Mouse Y";
     [SerializeField] Canvas menu;
+    [SerializeField] ModelMobileTransphorm mobile;
     Player player;
     bool isMenu = false;
 
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             menu.gameObject.SetActive(true);
             player.AnimRead(true);
+            mobile.isArm = true;
             yield return menu.gameObject.transform.DOLocalMoveX(-600, 1);
             isMenu = true;
             UnityEngine.Cursor.lockState = CursorLockMode.Confined;
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             player.AnimRead(false);
             yield return menu.gameObject.transform.DOLocalMoveX(-1200, 1).WaitForCompletion();
+            mobile.isArm = false;
             menu.gameObject.SetActive(false);
             isMenu = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;

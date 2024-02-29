@@ -74,6 +74,7 @@ public class TriggerUp : MonoBehaviour
     public void PovorotModel(ContactPoint point)
     {
         var tCont = point.point;
+        
         model.transform.LookAt(tCont);
         var r = model.transform.localRotation;
         r.x = r.z = 0;
