@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] TriggerJump triggerJump;
     bool isCtrl = false;
     Vector3 vector, vecUp;
-    float su, visotaStolknoveni = 0;
+    float su, visotaStolknoveni = 0, v;
 
     private void Awake()
     {
@@ -49,14 +49,12 @@ public class Player : MonoBehaviour
         var velosityaff = new Vector2(rigidbodyPlayer.velocity.x, rigidbodyPlayer.velocity.z).magnitude / maxspeed;
         su = normMove.magnitude - velosityaff;
         su = su <= 0 ? 0 : su;
-        float v = animator.GetFloat("Visota");
-        if (!triggerJump.isJump && !triggerUp.isTrogat) { vector.x *= 0.1f; vector.z *= 0.1f; }
+        v = animator.GetFloat("Visota");
+        if (!triggerJump.isJump && !triggerUp.isTrogat) { vector.x *= 0.3f; vector.z *= 0.3f; }
         else if (triggerUp.isTrogat) {
             var spUp = (su) * move.z * maxspeed * PlayerStats.me.zalesSpeed;
             vecUp = new Vector3(0, spUp, 0);
-            if (v < 0.55f) { vector.y = vecUp.y; }
-            else
-            transform.position += vecUp * Time.deltaTime;
+            if (v < 0.55f) { vector.y = vecUp.y; }  
         }
 
         float summ = (sprint * PlayerStats.me.staminaSprint) + (triggerUp.isTrogat&& !triggerJump.isJump ? PlayerStats.me.staminaZalesanie : 0);
@@ -72,8 +70,13 @@ public class Player : MonoBehaviour
         
         if (triggerUp.isUstal) v = 0;
         animator.SetFloat("Visota", v + (visotaStolknoveni - v) * 0.4f);
+        if(!triggerUp.isTrogat) animator.SetFloat("Visota", 0);
     }
 
+    private void FixedUpdate()
+    {
+        if(v >= 0.55f) transform.position += vecUp * Time.deltaTime;
+    }
 
     public void AnimRead(bool iz)
     {
