@@ -4817,9 +4817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6401797c33f12594da13fb10953d78cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  sprintSpeed: 14
-  zalesSpeed: 1
+  speed: 4
+  sprintSpeed: 9
+  zalesSpeed: 2
   heithJump: 6
   maxStamina: 100
   staminaPerTime: 0.3
@@ -4936,6 +4936,7 @@ MonoBehaviour:
   isUstal: 0
   text: {fileID: 6319376301811678048}
   slider: {fileID: 6808959185941853198}
+  model: {fileID: 0}
 --- !u!136 &5255752944444603793
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5002,6 +5003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f2a38753c9dd24f9b99e2892a2012a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   cameraPl: {fileID: 5255752942922852613}
   triggerUp: {fileID: 5255752944444603792}
   triggerJump: {fileID: 5255752942981966764}
@@ -5018,6 +5020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 3428870882097354355}
+  mobile: {fileID: 0}
 --- !u!136 &5255752944597306119
 CapsuleCollider:
   m_ObjectHideFlags: 0
