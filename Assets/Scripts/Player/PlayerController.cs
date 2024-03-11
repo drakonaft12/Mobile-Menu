@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using DG.Tweening;
 using static UnityEngine.AudioSettings;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(PlayerBase))]
 public class PlayerController : MonoBehaviour
 {
     private const string JumpButton = "Jump";

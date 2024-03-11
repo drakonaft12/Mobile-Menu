@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     private float money;
 
     private float moneyAdd = 1;
-    public float speed = 5, sprintSpeed = 14, zalesSpeed = 1, heithJump = 6, maxStamina = 100, staminaPerTime = 0.3f, staminaSprint = 0.6f, staminaZalesanie = 0.4f, staminaJump = 20, speedX = 2, speedY = 2;
+    public float speed = 5, sprintSpeed = 14, climbingSpeed = 1, heithJump = 6, maxStamina = 100, staminaPerTime = 0.3f, staminaSprint = 0.6f, stamina—limbing = 0.4f, staminaJump = 20, speedX = 2, speedY = 2;
     public void AddZar(float i)
     {
         moneyAdd += i;
@@ -37,12 +37,12 @@ public class PlayerStats : MonoBehaviour
     {
         speed += item.speedPlayer * mult;
         sprintSpeed+=item.sprintSpeedPlayer * mult; 
-        zalesSpeed+= item.zalesSpeedPlayer * mult; 
+        climbingSpeed+= item.zalesSpeedPlayer * mult; 
         heithJump+=item.heithJumpPlayer * mult;
         maxStamina += item.maxStaminaPlayer * mult ; 
         staminaPerTime+=item.staminaPerTimePlayer * mult; 
         staminaSprint+=item.staminaSprintPlayer * mult; 
-        staminaZalesanie+=item.staminaZalesaniePlayer * mult; 
+        stamina—limbing+=item.staminaZalesaniePlayer * mult; 
         staminaJump+=item.staminaJumpPlayer * mult;
     }
     public void Zarabotak(float _money)

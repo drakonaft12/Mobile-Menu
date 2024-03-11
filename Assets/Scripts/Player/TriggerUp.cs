@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TriggerUp : MonoBehaviour
 {
-    public bool isTrogat = false, isUstal = false;
+    public bool isTouch = false, isTired = false;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Slider slider;
     [SerializeField] GameObject model;
@@ -23,8 +23,8 @@ public class TriggerUp : MonoBehaviour
     }
     public void StaminaUpdate(float _stamina)
     {
-        if (stamina <= 0) { isUstal = true; stamina = 0; StartCoroutine(StaminaRegnerator()); }
-        if(stamina >= PlayerStats.me.maxStamina) { stamina = PlayerStats.me.maxStamina; isUstal = false; StopAllCoroutines(); }
+        if (stamina <= 0) { isTired = true; stamina = 0; StartCoroutine(StaminaRegnerator()); }
+        if(stamina >= PlayerStats.me.maxStamina) { stamina = PlayerStats.me.maxStamina; isTired = false; StopAllCoroutines(); }
         if (_stamina != 0)
         {
             stamina -= _stamina;
@@ -60,18 +60,18 @@ public class TriggerUp : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject != transform.parent.gameObject && !isUstal) 
+        if (other.gameObject != transform.parent.gameObject && !isTired) 
         {
-            isTrogat = true;
+            isTouch = true;
             
         }
-        else if (isUstal)
+        else if (isTired)
         {
-            isTrogat = false;
+            isTouch = false;
         }
     }
 
-    public void PovorotModel(ContactPoint point)
+    public void RotateModel(ContactPoint point)
     {
         var tCont = point.point;
         
@@ -84,7 +84,7 @@ public class TriggerUp : MonoBehaviour
     {
         if (other.gameObject != transform.parent.gameObject)
         {
-            isTrogat = false;
+            isTouch = false;
             model.transform.rotation = new Quaternion() ;
         }
     }
