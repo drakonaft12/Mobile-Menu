@@ -18,15 +18,15 @@ public abstract class PlayerBase : MonoBehaviour
 
 
 
-    protected float SpeedCharacter => PlayerStats.me.speed;
-    protected float SprintSpeedCharacter => PlayerStats.me.sprintSpeed;
-    protected float ÑlimbingSpeedCharacter => PlayerStats.me.climbingSpeed;
-    protected float StaminaÑlimbingCharacter => PlayerStats.me.staminaÑlimbing;
-    protected float StaminaSprintCharacter => PlayerStats.me.staminaSprint;
-    protected float HeithJumpCharacter => PlayerStats.me.heithJump;
-    protected float StaminaJumpCharacter => PlayerStats.me.staminaJump;
-    protected float SpeedAxisXCharacter => PlayerStats.me.speedX;
-    protected float SpeedAxisYCharacter => PlayerStats.me.speedY;
+    protected virtual float SpeedCharacter => PlayerStats.me.speed;
+    protected virtual float SprintSpeedCharacter => PlayerStats.me.sprintSpeed;
+    protected virtual float ÑlimbingSpeedCharacter => PlayerStats.me.climbingSpeed;
+    protected virtual float StaminaÑlimbingCharacter => PlayerStats.me.staminaÑlimbing;
+    protected virtual float StaminaSprintCharacter => PlayerStats.me.staminaSprint;
+    protected virtual float HeithJumpCharacter => PlayerStats.me.heithJump;
+    protected virtual float StaminaJumpCharacter => PlayerStats.me.staminaJump;
+    protected virtual float SpeedAxisXCharacter => PlayerStats.me.speedX;
+    protected virtual float SpeedAxisYCharacter => PlayerStats.me.speedY;
 
 
     private void Awake()
@@ -45,7 +45,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (isCtrl) { maxspeed = SpeedCharacter / 2; }
         else if (sprint !=0&& !triggerUp.isTired) 
         { maxspeed = SprintSpeedCharacter * sprint; maxspeed = maxspeed < SpeedCharacter ? SpeedCharacter : maxspeed; }
-        else { maxspeed = SpeedCharacter; }
+        else { maxspeed =move.z<0? SpeedCharacter*0.75f : SpeedCharacter; }
         var deltaSpeed = rigidbodyPlayer.velocity / maxspeed;
         vector -= deltaSpeed*4;
         vector /= 4;
@@ -55,8 +55,8 @@ public abstract class PlayerBase : MonoBehaviour
         var velosityaff = new Vector2(rigidbodyPlayer.velocity.x, rigidbodyPlayer.velocity.z).magnitude / maxspeed;
         su = normMove.magnitude - velosityaff;
         su = su <= 0 ? 0 : su;
-
-        v = animator.Animation(move,sprint,triggerUp.isTired,triggerUp.isTouch,triggerJump.isJump,collisionHeight);
+        float alfa = triggerUp.isTouch? ÑlimbingSpeedCharacter : maxspeed;
+        v = animator.Animation(move, sprint, alfa, triggerUp.isTired, triggerUp.isTouch, triggerJump.isJump, collisionHeight);
 
         if (!triggerJump.isJump && !triggerUp.isTouch) { vector.x *= 0.3f; vector.z *= 0.3f; }
         else if (triggerUp.isTouch) {

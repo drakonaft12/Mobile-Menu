@@ -278,7 +278,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.28079522
+  m_TransitionDuration: 0.28755406
   m_TransitionOffset: 0
   m_ExitTime: 0.8085487
   m_HasExitTime: 1
@@ -332,15 +332,15 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: b526a3dcbe511894d974eb224b273522, type: 3}
-    m_Threshold: 0.14285715
+    m_Threshold: 0.11111111
     m_Position: {x: -1, y: 0}
-    m_TimeScale: -1
+    m_TimeScale: -1.25
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 50723441ab7b5a846a54d673590d5c75, type: 3}
-    m_Threshold: 0.2857143
+    m_Threshold: 0.22222222
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -348,15 +348,15 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 569986110ef3e2948933c22bb76ac2f3, type: 3}
-    m_Threshold: 0.42857143
+    m_Threshold: 0.33333334
     m_Position: {x: 2, y: 0}
-    m_TimeScale: 0.5
+    m_TimeScale: 0.25
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: be99a37eacc98dc45a01dc658a96184a, type: 3}
-    m_Threshold: 0.5714286
+    m_Threshold: 0.44444445
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -364,7 +364,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: a1f94cdfd2d92364582d78b294582644, type: 3}
-    m_Threshold: 0.71428573
+    m_Threshold: 0.5555556
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -372,20 +372,36 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: be99a37eacc98dc45a01dc658a96184a, type: 3}
-    m_Threshold: 0.85714287
-    m_Position: {x: -1, y: -1}
+    m_Threshold: 0.6666667
+    m_Position: {x: -1, y: -1.5}
     m_TimeScale: 1
     m_CycleOffset: 0.5
     m_DirectBlendParameter: Vertical
     m_Mirror: 1
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: a1f94cdfd2d92364582d78b294582644, type: 3}
-    m_Threshold: 1
-    m_Position: {x: -1, y: 1}
+    m_Threshold: 0.7777778
+    m_Position: {x: -1, y: 1.5}
     m_TimeScale: 1
     m_CycleOffset: 0.5
     m_DirectBlendParameter: Vertical
     m_Mirror: 1
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: be99a37eacc98dc45a01dc658a96184a, type: 3}
+    m_Threshold: 0.8888889
+    m_Position: {x: 1.25, y: -1.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Vertical
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: a1f94cdfd2d92364582d78b294582644, type: 3}
+    m_Threshold: 1
+    m_Position: {x: 1.25, y: 1.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Vertical
+    m_Mirror: 0
   m_BlendParameter: Vertical
   m_BlendParameterY: Horizontal
   m_MinThreshold: 0
@@ -407,55 +423,55 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isTrogat
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Jump
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isRead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isCTRL
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Visota
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: VelVert
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

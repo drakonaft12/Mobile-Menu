@@ -56,7 +56,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.2166065
+        functionName: RingtPhout
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: fcff20e0bcc007943b7118f3996dcbcc, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2166065
+        functionName: LeftPhout
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 7a00d46791416e0468dea303af906010, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
