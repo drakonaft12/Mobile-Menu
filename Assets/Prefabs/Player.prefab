@@ -8637,6 +8637,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5925485129888193248}
+--- !u!114 &3261747945089430372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158837263390370062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467e5c35a394cb1418206b8ee87bde9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dinamo: {fileID: 9085885299303036664}
+  sound: {fileID: 11400000, guid: ac36a1c5e1a167f41a61c3c39a49631b, type: 2}
 --- !u!114 &3837857898981748709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8651,20 +8665,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RingtP: {fileID: 6823500042255944167}
   sound: {fileID: 3261747945089430372}
---- !u!114 &3261747945089430372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158837263390370062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 467e5c35a394cb1418206b8ee87bde9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dinamo: {fileID: 9085885299303036664}
-  sound: {fileID: 8300000, guid: cd75c2210b1676e498b731904925e1a6, type: 3}
 --- !u!4 &1972247837553865652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd704eb96c11cbc4a88e2a5b6564227b, type: 3}

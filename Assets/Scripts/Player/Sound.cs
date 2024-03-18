@@ -7,9 +7,9 @@ using UnityEngine.Timeline;
 public class Sound : MonoBehaviour
 {
     [SerializeField] AudioSource dinamo;
-    [SerializeField] AudioClip sound;
+    [SerializeField] SoundArray sound;
     public void PlaySound()
     {
-        dinamo.PlayOneShot(sound);
+        dinamo.PlayOneShot(sound.SetClip);
     }
 }
