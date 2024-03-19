@@ -26796,7 +26796,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146184896}
-  m_LocalRotation: {x: 1.06787475e-10, y: 0.99998075, z: 0.006205514, w: -0.00000001720815}
+  m_LocalRotation: {x: -1.0678781e-10, y: 0.99998075, z: 0.006205534, w: 0.000000017208148}
   m_LocalPosition: {x: 16.892221, y: 1.962, z: 21.318666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35666,15 +35666,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.006205514
+      value: -0.006205534
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001720815
+      value: -0.000000017208148
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.06787475e-10
+      value: -1.0678781e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852859, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: zalesSpeed
@@ -36150,6 +36150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5255752944597306116, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
+    - {fileID: 3837857898981748709, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
 --- !u!1001 &1529212635
 PrefabInstance:

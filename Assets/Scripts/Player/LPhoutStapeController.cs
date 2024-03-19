@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class LPhoutStapeController : MonoBehaviour
 {
-    [SerializeField] ParticleSystem LeftP;
+    [SerializeField] ParticleSystem LeftP, RingtP;
     [SerializeField] Sound sound;
-    public void LeftPhout()
+    public virtual void LeftPhout()
     {
         LeftP.Play();
+        sound.PlaySound();
+    }
+    public virtual void RingtPhout()
+    {
+        RingtP.Play();
         sound.PlaySound();
     }
 }
