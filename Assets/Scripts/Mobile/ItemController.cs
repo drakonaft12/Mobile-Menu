@@ -207,7 +207,7 @@ public class ItemController : MonoBehaviour
 
     private void Load(int i)
     {
-        var characts = JsonConvert.DeserializeObject<List<ItemCharacters>>(System.IO.File.ReadAllText(UnityEngine.Application.streamingAssetsPath + "/ItemsInventory.json"));
+        var characts = JsonConvert.DeserializeObject<List<ItemCharacters>>(System.IO.File.ReadAllText(UnityEngine.Application.persistentDataPath + "/ItemsInventory.json"));
         foreach (var item in characts)
         {
             AddItem(i, item);
@@ -224,7 +224,7 @@ public class ItemController : MonoBehaviour
         {
             characts.Add(item.ItemCharacters);
         }
-        System.IO.File.WriteAllText(UnityEngine.Application.streamingAssetsPath + "/ItemsInventory.json", JsonConvert.SerializeObject(characts));
+        System.IO.File.WriteAllText(UnityEngine.Application.persistentDataPath + "/ItemsInventory.json", JsonConvert.SerializeObject(characts));
     }
 
 }

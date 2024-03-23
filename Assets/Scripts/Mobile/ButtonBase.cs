@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Image targetGraphic;
-
+    public bool isClick;
     protected Action onClick;
 
     private Vector2 startScale;
@@ -31,7 +31,7 @@ public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerDown(PointerEventData eventData)
     {
         transform.localScale *= animationModificator;
-
+        isClick = true;
         onClick?.Invoke();
     }
 
@@ -39,6 +39,7 @@ public abstract class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        isClick = false;
         transform.localScale = startScale;
     }
     private void OnDisable()

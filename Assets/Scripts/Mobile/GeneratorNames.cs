@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using TMPro;
@@ -13,6 +14,9 @@ public class GeneratorNames
 {
     private NameVariation variation;
     private ImageVariation images;
+#if PLATFORM_ANDROID
+
+#endif
 
     public GeneratorNames()
     {
@@ -22,13 +26,12 @@ public class GeneratorNames
 
     private void Load()
     {
-
-        variation = JsonConvert.DeserializeObject<NameVariation>(System.IO.File.ReadAllText(Application.streamingAssetsPath + "/NamesStat.json"));
+        variation = JsonConvert.DeserializeObject<NameVariation>(System.IO.File.ReadAllText(Application.persistentDataPath + "/NamesStat.json"));
     }
 
     private void Save()
     {
-        System.IO.File.WriteAllText(Application.streamingAssetsPath + "/NamesStat.json", JsonConvert.SerializeObject(variation));
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/NamesStat.json", JsonConvert.SerializeObject(variation));
     }
     public string ReturnName(out Sprite mask, out Sprite texture, out int _lP, out int _lS)
     {
@@ -88,8 +91,8 @@ public class GeneratorNames
     
     private async void LoadTexture(string name,int index)
     {
-
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Textures/{name}.png");
+        images.spritesPrilag[index] = Resources.Load<Sprite>("Textures/" + name);
+        /*WWW wWW = new WWW("file:///" + UnityEngine.Application.persistentDataPath + $"/Textures/{name}.png");
         UnityWebRequest unity = new UnityWebRequest();
 
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
@@ -101,12 +104,12 @@ public class GeneratorNames
         {
             var tex = wWW.textureNonReadable;
             images.spritesPrilag[index] = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
-        }
+        }*/
     }
     private async void LoadMask(string name, int index)
     {
-
-        WWW wWW = new WWW("file:///" + UnityEngine.Application.streamingAssetsPath + $"/Masks/{name}.png");
+        images.spritesSush[index] = Resources.Load<Sprite>("Masks/"+name);
+        /*WWW wWW = new WWW("file:///" + UnityEngine.Application.persistentDataPath + $"/Masks/{name}.png");
         while (!wWW.isDone && string.IsNullOrEmpty(wWW.error))
         {
             await Task.Delay(10);
@@ -116,7 +119,7 @@ public class GeneratorNames
         {
             var tex = wWW.textureNonReadable;
             images.spritesSush[index] = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
-        }
+        }*/
     }
 }
 

@@ -224,13 +224,13 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_SpeedParameterActive: 1
-  m_MirrorParameterActive: 0
+  m_MirrorParameterActive: 1
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 6068579594755074724}
   m_Tag: 
   m_SpeedParameter: VelVert
-  m_MirrorParameter: 
+  m_MirrorParameter: isMirror
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!206 &-3388323080116380738
@@ -350,7 +350,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 569986110ef3e2948933c22bb76ac2f3, type: 3}
     m_Threshold: 0.33333334
     m_Position: {x: 2, y: 0}
-    m_TimeScale: 0.25
+    m_TimeScale: 0.5
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
@@ -373,19 +373,19 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: be99a37eacc98dc45a01dc658a96184a, type: 3}
     m_Threshold: 0.6666667
-    m_Position: {x: -1, y: -1.5}
+    m_Position: {x: -0.5, y: -0.5}
     m_TimeScale: 1
-    m_CycleOffset: 0.5
+    m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
-    m_Mirror: 1
+    m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: a1f94cdfd2d92364582d78b294582644, type: 3}
     m_Threshold: 0.7777778
-    m_Position: {x: -1, y: 1.5}
+    m_Position: {x: -0.5, y: 0.5}
     m_TimeScale: 1
-    m_CycleOffset: 0.5
+    m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
-    m_Mirror: 1
+    m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: be99a37eacc98dc45a01dc658a96184a, type: 3}
     m_Threshold: 0.8888889
@@ -468,6 +468,12 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: VelVert
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isMirror
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

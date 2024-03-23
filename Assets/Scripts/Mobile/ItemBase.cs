@@ -76,7 +76,7 @@ public abstract class ItemBase : MonoBehaviour,IPointerClickHandler
     {
         text.text = $"{characters.nameItem}\n\nMoney for click: \t\t{characters.moneyMore}\n" +
             $"Speed: \t\t\t{Math.Round(characters.speed,4)}\n" +
-            $"<color = green>SprintSpeed:</color> \t\t{Math.Round(characters.sprintSpeed, 4)}\n" +
+            $"SprintSpeed: \t\t{Math.Round(characters.sprintSpeed, 4)}\n" +
             $"ZalesSpeed: \t\t{Math.Round(characters.zalesSpeed, 4)}\n" +
             $"HeithJump: \t\t\t{Math.Round(characters.heithJump, 4)}\n" +
             $"MaxStamina: \t\t{Math.Round(characters.maxStamina, 4)}\n" +

@@ -15,14 +15,15 @@ public class AnimationModul : MonoBehaviour
     private const string ReadMobile = "isRead";
     private const string Squatting = "isCTRL";
     private const string JumpStage = "Jump";
+    private const string isMirror = "isMirror";
 
     public float Animation(Vector3 move, float sprint, float alfa,bool isTired, bool isPawOver, bool isJump, float supportHeight)
     {
+      
         animator.SetFloat(Horizontal, move.x);
         animator.SetFloat(Vertical, move.z + sprint);
-        var az = math.abs(move.x);
-
-        animator.SetFloat(VerticalVelosity, (move.z != 0 ? move.z + sprint : az) * alfa);
+        animator.SetFloat(VerticalVelosity, move.z<0?-alfa: alfa);
+        animator.SetBool(isMirror, move.z < 0);
 
         animator.SetBool(Jump, !isJump);
 
