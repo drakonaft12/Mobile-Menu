@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class CameraControllerPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public bool pressed = false;
@@ -25,7 +26,7 @@ public class CameraControllerPanel : MonoBehaviour, IPointerDownHandler, IPointe
         pressed = false;
     }
 
-
+#if PLATFORM_ANDROID
     // Update is called once per frame
     void Update()
     {
@@ -43,4 +44,5 @@ public class CameraControllerPanel : MonoBehaviour, IPointerDownHandler, IPointe
             }
         }
     }
+#endif
 }

@@ -8,7 +8,10 @@ using DG.Tweening;
 using static UnityEngine.AudioSettings;
 
 [RequireComponent(typeof(PlayerBase))]
-public class PlayerController : MonoBehaviour, IRotateFromTotch
+public class PlayerController : MonoBehaviour
+#if PLATFORM_ANDROID
+    , IRotateFromTotch
+#endif
 {
     private const string JumpButton = "Jump";
     private const string HorisontalButtons = "Horizontal";
@@ -23,14 +26,18 @@ public class PlayerController : MonoBehaviour, IRotateFromTotch
     float sprint;
 #if PLATFORM_ANDROID
     Vector2 Rotate;
-    [SerializeField] ButtonBase sprintButton, jumpButton, menuButton;
 #endif
+    [SerializeField] ButtonBase sprintButton, jumpButton, menuButton;
     private void Awake()
     {
         player = GetComponent<Player>();
         menu.gameObject.SetActive(false);
 #if !PLATFORM_ANDROID
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        joystick.gameObject.SetActive(false);
+        sprintButton.gameObject.SetActive(false);
+        jumpButton.gameObject.SetActive(false);
+        menuButton.gameObject.SetActive(false);
 #endif
     }
 
@@ -102,8 +109,10 @@ public class PlayerController : MonoBehaviour, IRotateFromTotch
         }
     }
 
+#if PLATFORM_ANDROID
     public void EventTotch()
     {
         Rotate = new Vector2(Input.GetAxis(OsX), Input.GetAxis(OsY));
     }
+#endif
 }

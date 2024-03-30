@@ -1,16 +1,6 @@
-using Newtonsoft.Json;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Networking.Types;
-using UnityEngine.UI;
-using UnityEngine.Windows;
+
 
 public class ItemShop : MonoBehaviour
 {
@@ -44,7 +34,7 @@ public class ItemShop : MonoBehaviour
                 items[i] = itemComp.gameObject.GetComponent<BuyItems>();
                 AddZnach(itemComp, items[i]);
                 items[i].addButton = buyButton;
-                items[i].Cost = UnityEngine.Random.Range(1, maxCostMoney);
+                items[i].Cost = Random.Range(1, maxCostMoney);
             }
 
             yield return new WaitWhile(()=> !isLoad);
