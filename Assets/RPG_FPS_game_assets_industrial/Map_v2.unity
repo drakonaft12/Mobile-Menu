@@ -17102,8 +17102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf88dc2ac3706149b3b4afa3e3f4470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 888674041}
-  playerSteals: {fileID: 543523668}
   componentSteals: {fileID: 1338217272}
   Eyes: {fileID: 183838754}
 --- !u!1001 &699624168
@@ -21358,11 +21356,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d97d456aead63499ac7d5316541f78, type: 3}
---- !u!1 &888674041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5255752944444603805, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
-  m_PrefabInstance: {fileID: 1527711831}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &890492768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23935,8 +23928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf88dc2ac3706149b3b4afa3e3f4470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 888674041}
-  playerSteals: {fileID: 543523668}
   componentSteals: {fileID: 1338217272}
   Eyes: {fileID: 1451882108}
 --- !u!136 &1011681727
@@ -27950,8 +27941,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146184896}
-  m_LocalRotation: {x: -4.836565e-13, y: 0.99999356, z: -0.003597969, w: -1.3442397e-10}
-  m_LocalPosition: {x: 16.892221, y: 1.962, z: 21.318666}
+  m_LocalRotation: {x: 4.8365635e-13, y: 0.99999356, z: -0.0035979678, w: 1.3442397e-10}
+  m_LocalPosition: {x: 16.892221, y: 2.271, z: 21.318666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37516,7 +37507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37528,15 +37519,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.003597969
+      value: 0.0035979678
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.3442397e-10
+      value: -1.3442397e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852858, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.836565e-13
+      value: 4.8365635e-13
       objectReference: {fileID: 0}
     - target: {fileID: 5255752942922852859, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: zalesSpeed
@@ -37722,6 +37713,14 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: -0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 5255752944444603805, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255752944444603805, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
+      propertyPath: m_TagString
+      value: PlayerCollider
+      objectReference: {fileID: 0}
     - target: {fileID: 5255752944493720691, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -37816,7 +37815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255752944597306115, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.962
+      value: 1.271
       objectReference: {fileID: 0}
     - target: {fileID: 5255752944597306115, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37856,6 +37855,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255752944597306124, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255752944597306124, guid: b793b18525714ef43a5f13e8427bb196, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5261048910674414996, guid: b793b18525714ef43a5f13e8427bb196, type: 3}

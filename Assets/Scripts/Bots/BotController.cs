@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -11,21 +10,20 @@ using UnityEngine.UI;
 public class BotController : MonoBehaviour
 {
     NavMeshAgent agent;
-    [SerializeField] GameObject player, playerSteals;
-    [SerializeField] GameObject componentSteals, Eyes;
-    Slider slider;
+    [SerializeField] GameObject Eyes;
     NavMeshPath path1, path2;
+    string enemy = "PlayerCollider", enemyStealse = "Player";
 
     Vector3 point;
     float statSteals = 10, stealsPoint = 0, length = 2f;
 
-    public float ThisSteals { get => stealsPoint/ statSteals; }
+    public float ThisSteals { get => stealsPoint / statSteals; }
 
     void Start()
     {
+
         agent = GetComponent<NavMeshAgent>();
-        componentSteals.TryGetComponent(out slider);
-        point = player.transform.position;
+        point = transform.position + Vector3.forward * Random.Range(-15f, 15f) + Vector3.right * Random.Range(-15f, 15f);
         StealsHUD.me.BotAdd(this);
         path1 = new NavMeshPath();
         path2 = new NavMeshPath();
@@ -34,54 +32,62 @@ public class BotController : MonoBehaviour
     private void Update()
     {
 
-        if (Physics.Raycast(Eyes.transform.position, player.transform.position - Eyes.transform.position, out var hit))
+        var colls = Physics.OverlapSphere(Eyes.transform.position, 25f);
+        foreach (var item in colls)
         {
 
-            if (hit.collider != null)
+            if (item.tag == enemyStealse)
             {
-                if (hit.collider.gameObject == player)
+                if (Physics.Raycast(Eyes.transform.position, item.transform.position - Eyes.transform.position, out var hit))
                 {
-                    StealsPointsAdd(40);
+                    if (hit.collider.tag == enemy)
+                    {
+                        StealsPointsAdd(30, hit.collider);
+                    }
+                    else if (hit.collider.tag == enemyStealse)
+                    {
+                        StealsPointsAdd(10, hit.collider);
+                    }
+                    if (Viet)
+                    {
+                        point = hit.collider.transform.position;
+                    }
+
                 }
-                else if (hit.collider.gameObject == playerSteals)
+                
+                if ((item.transform.position - transform.position).magnitude <= 4 && Viet)
                 {
-                    StealsPointsAdd(10);
+                    agent.FindClosestEdge(out var hit1);
+                    agent.CalculatePath(hit1.position, path1);
                 }
-                else if (stealsPoint > 0)
-                    stealsPoint -= Time.deltaTime;
+                break;
             }
 
-
         }
-
         StealsFunction();
+        if (stealsPoint > 0)
+            stealsPoint -= Time.deltaTime;
 
         if (agent.remainingDistance < length)
         {
             point = FindPath(point);
         }
+
+
         agent.CalculatePath(point, path1);
-        if ((player.transform.position - transform.position).magnitude <= 4 && Viet)
-        {
-            agent.FindClosestEdge(out var hit1);
-            agent.CalculatePath(hit1.position, path1);
-        }
+
         ResetPath();
 
 
 
         //if (slider != null)
-            //slider.value = stealsPoint / statSteals;
+        //slider.value = stealsPoint / statSteals;
         //componentSteals.transform.LookAt(Camera.main.transform);
     }
 
     private void StealsFunction()
     {
-        if (Viet)
-        {
-            point = player.transform.position;
-
-        }
+        
         if (!Viet && stealsPoint >= statSteals)
         {
             Viet = true;
@@ -109,13 +115,14 @@ public class BotController : MonoBehaviour
     }
 
     bool Viet = false;
-    void StealsPointsAdd(float val)
+    void StealsPointsAdd(float val, Collider collider)
     {
         if (stealsPoint < statSteals)
         {
-            stealsPoint += 2 * Time.deltaTime * val / (transform.position - player.transform.position).magnitude *
-                val / (transform.position - player.transform.position).magnitude;
+            stealsPoint += 2 * Time.deltaTime * val / (transform.position - collider.transform.position).magnitude *
+                val / (transform.position - collider.transform.position).magnitude;
         }
+        if (stealsPoint > statSteals * 1.1f) stealsPoint = statSteals * 1.1f;
     }
 
     Vector3 FindPath(Vector3 vector)
